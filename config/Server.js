@@ -18,6 +18,8 @@ class Server  {
 
     routes(){
 
+        this.app.use(express.json())
+        this.app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
         this.app.use('/api/spending',require('../routers/spendingRouter'))
 
     }

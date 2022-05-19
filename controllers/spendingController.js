@@ -3,10 +3,15 @@ const spendingModel  = require('../models/Spending');
 
 const spendingGet = async (req,res = Response) => {
 
+    
+
+}
+
+const spendingPost = async (req,res = Response) =>{
+    
+    const { name,price,amount } = req.body
     const spe = new spendingModel({
-        name:  'galleta', // String is shorthand for {type: String}
-        price: 0.50,
-        amount:   2
+        name,price,amount
     });
 
     const result = await spe.save()
@@ -15,6 +20,18 @@ const spendingGet = async (req,res = Response) => {
         result
     })
 
+
+}
+const spendingPull = (req,res = Response) => {
+
+}
+const spendingDelete = (req,res=Response)=>{
+
 }
 
-module.exports = spendingGet
+module.exports = { 
+    spendingGet,
+    spendingPost,
+    spendingPull,
+    spendingDelete
+}
