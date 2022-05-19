@@ -1,16 +1,20 @@
+const { Response } = require("express")
+const spendingModel  = require('../models/Spending');
 
-class spendingController {
+const spendingGet = async (req,res = Response) => {
 
-    constructor(){
+    const spe = new spendingModel({
+        name:  'galleta', // String is shorthand for {type: String}
+        price: 0.50,
+        amount:   2
+    });
 
-    }
+    const result = await spe.save()
 
-    postSpending(){
-
-        console.log('post gastos')
-
-    }
+    return res.json({
+        result
+    })
 
 }
 
-module.exports = spendingController
+module.exports = spendingGet

@@ -1,23 +1,12 @@
 const { Router } = require("express");
-const SpendingController = require("../controllers/spendingController")
-
-class spendingRouter {
-
-    constructor(){
-        //this.router = Router();
-        this.spendingC = new SpendingController();
-        this.postSpending();
-    }
-
-    postSpending(){
-
-         this.spendingC.postSpending();
+const spendingGet = require("../controllers/spendingController")
 
 
-       // this.router.post
+const router = Router();
 
-    }
 
-}
+ router.get('/',[],spendingGet)
 
-module.exports = spendingRouter
+
+
+module.exports = router

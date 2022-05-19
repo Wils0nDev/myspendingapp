@@ -1,6 +1,5 @@
 const express = require('express')
 const Mongo = require('./DataBase')
-const SpendingRouter = require('../routers/spendingRouter')
 
 class Server  {
 
@@ -8,8 +7,7 @@ class Server  {
         this.app = express();
         this.port = 4200
         this.bd = new Mongo();
-        this.sp = new SpendingRouter()
-        //this.connect()
+        this.routes();
     }
 
     listen(){
@@ -19,6 +17,8 @@ class Server  {
     }  
 
     routes(){
+
+        this.app.use('/api/spending',require('../routers/spendingRouter'))
 
     }
 
