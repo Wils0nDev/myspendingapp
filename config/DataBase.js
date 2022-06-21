@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+require('dotenv').config()
 
 
 class DataBase {
@@ -9,7 +10,11 @@ class DataBase {
 
     async connect(){
         try {
-            await mongoose.connect('mongodb+srv://wils0n:pYcphwy2MCdcbFJM@myspendingapp.073ab.mongodb.net/test');
+            await mongoose.connect(process.env.MONGODB_CNN,
+            {
+              useNewUrlParser :true,
+              useUnifiedTopology :true
+            });
             console.log('conexin satisfactoria')
           } catch (error) {
             console.log(error);

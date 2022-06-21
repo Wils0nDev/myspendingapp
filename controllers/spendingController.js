@@ -9,12 +9,20 @@ const spendingGet = async (req,res = Response) => {
 
 const spendingPost = async (req,res = Response) =>{
     
-    const { name,price,amount } = req.body
-    const spe = new spendingModel({
-        name,price,amount
+    const { name,price,amount,total } = req.body
+
+    const spe = new spendingModel()
+
+    const totalP  = spe.calculateTotal(price)
+
+   
+    const result = await spe.save({
+        name,
+        price,
+        amount,
+        total 
     });
 
-    const result = await spe.save()
 
     return res.json({
         result
